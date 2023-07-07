@@ -5,9 +5,11 @@ let listNum = 0;
 let backColor = 2;
 
 const predefinedTasks = [
-  "Task 1",
-  "Task 2",
-  "Task 3"
+  "Walk the dog",
+  "Authenticate with passport-js",
+  "Validate register input",
+  "Create reddit website",
+  "Store sessions on mongodb"
 ];
 
 addList = () => {
