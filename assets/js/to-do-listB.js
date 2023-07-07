@@ -2,6 +2,7 @@ let elements = document.getElementById("contElements");
 let input = document.getElementById("inputText");
 let list = document.getElementById("list");
 let listNum = 0;
+let backColor = 2;
 
 addList = () => {
   let inputText = filterList(input.value);
@@ -11,11 +12,19 @@ addList = () => {
     input.value = "";
     listNum++;
     contTask();
+    if(backColor == 2)
+    {
+        backColor = 3;
+    }
+    else
+    {
+        backColor = 2;
+    }
   }
 };
 
 createListElement = (text) => {
-  let listItemClass = listNum % 2 === 0 ? 'To-do-list-group-gray' : 'To-do-list-group-white';
+  let listItemClass = backColor % 2 === 0 ? 'To-do-list-group-gray' : 'To-do-list-group-white';
 
   let listElement = document.createElement('li');
   listElement.setAttribute('class', `list-group-item To-do-list-group-item ${listItemClass}`);
