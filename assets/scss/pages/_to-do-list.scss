@@ -85,6 +85,10 @@
             justify-content: space-between;
             padding: 12px 16px;
         }
+
+        &-white{
+            background: $white;
+        }
     }
 
     &-check{
@@ -95,14 +99,14 @@
        
     }
 
-    &-check:checked &-text{
+    &-check:checked + &-text{
         text-decoration-line: line-through;
     } 
 
     &-text{
         color: $dark-gray;
         font-size: 20px;
-
+        text-decoration-line: none;
     }
 
     &-button{

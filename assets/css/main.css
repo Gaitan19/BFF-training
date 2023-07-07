@@ -9396,15 +9396,18 @@ h1, .h1, h2, .h2, h3, .h3 {
       display: flex;
       justify-content: space-between;
       padding: 12px 16px; }
+    .To-do-list-group-white {
+      background: #fff; }
   .To-do-list-check {
     background-color: #333;
     color: #333;
     font-size: 20px; }
-  .To-do-list-check:checked .To-do-list-text {
+  .To-do-list-check:checked + .To-do-list-text {
     text-decoration-line: line-through; }
   .To-do-list-text {
     color: #333;
-    font-size: 20px; }
+    font-size: 20px;
+    text-decoration-line: none; }
   .To-do-list-button {
     padding: 16px 20px 16px 24px; }
     .To-do-list-button-icon {
