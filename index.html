@@ -12,29 +12,25 @@
     <body>
         <section class="d-flex To-do-list">
             <div class="d-flex To-do-list-container">
-                <h1 class="To-do-list-container-text">
-                    Todos(5)
+                <h1 class="To-do-list-container-text" id="contElements">
+                    Todos(0)
                 </h1>
-
                 <div class="d-flex To-do-list-container-form">
                     <input class="To-do-list-input" placeholder="input your task" type="text" id="inputText">
-                    <button class="btn btn-warning To-do-list-submit">
+                    <button onclick="addList()" class="btn btn-warning To-do-list-submit">
                         <span class="To-do-list-submit-format">Submit</span>
                         <span class="fa-sharp fa-solid fa-paper-plane To-do-list-submit-format"></span>
                     </button>
-                    
                 </div>
-
                 <div class="To-do-list-container-group">
-                    <ul class="list-group To-do-list-group">
-                        <li class=" list-group-item To-do-list-group-item">
+                    <ul class="list-group To-do-list-group" id="list">
+                       <!--  <li class=" list-group-item To-do-list-group-item">
                             <div class="form-check">
                                 <input class="form-check-input To-do-list-check" type="checkbox" value="" id="flexCheckDefault">
                                 <label class="form-check-label To-do-list-text">
                                   Walk the dog
                                 </label>
                               </div>
-
                               <div class="To-do-list-group-buttons">
                                 <button type="button" class="btn btn-success To-do-list-button">
                                     <span class="fa-solid fa-pen-to-square To-do-list-button-icon"></span>
@@ -43,7 +39,6 @@
                                     <span class="fa-sharp fa-solid fa-trash To-do-list-button-icon"></span>
                                 </button>
                               </div>
-                             
                         </li>
 
                         <li class=" list-group-item To-do-list-group-item To-do-list-group-white">
@@ -53,7 +48,6 @@
                                   Walk the dog
                                 </label>
                               </div>
-
                               <div class="To-do-list-group-buttons">
                                 <button type="button" class="btn btn-success To-do-list-button">
                                     <span class="fa-solid fa-pen-to-square To-do-list-button-icon"></span>
@@ -62,16 +56,12 @@
                                     <span class="fa-sharp fa-solid fa-trash To-do-list-button-icon"></span>
                                 </button>
                               </div>
-                             
-                        </li>
-                        
-
+                        </li> -->
                     </ul>
                 </div>
             </div>
-
         </section>
-   <!--      <div class=" container rounded-3 border border-2 border-dark my-5 bg-white" style="height:auto;">
+ <!--        <div class=" container rounded-3 border border-2 border-dark my-5 bg-white" style="height:auto;">
             <div>
                 <h1 class=" h1">To Do List</h1>
                 <div class="row">
@@ -95,7 +85,10 @@
                 </div>
             </div>
         </div>
-        <script src="scripts/todo-list.js"></script>-->
+        <script src="scripts/todo-list.js"></script> -->
+
+        <script src="assets/js/to-do-list.js"></script>
+
         <script src="https://kit.fontawesome.com/2e6341f303.js" crossorigin="anonymous"></script> 
     </body>
 
