@@ -70,7 +70,7 @@ filterList = (x) => {
 
 editList = (listId) => {
   let currentText = document.getElementById(`text${listId}`);
-  let newText = prompt("Wanna Change list?", currentText.innerHTML);
+  let newText = prompt("Wanna Change task?", currentText.innerHTML);
   if (filterList(newText)) {
     currentText.innerHTML = newText;
   }
