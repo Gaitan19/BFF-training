@@ -2,9 +2,11 @@ let elements= document.getElementById("contElements");
 let input = document.getElementById("inputText");
         let list= document.getElementById("list");
         let listNum = 0;
+        let backgroundColor = 0;
 
 addList=()=>{
     let inputText = filterList(input.value);
+    let currentList;
     if(inputText)
     {
         let listWhite = ` <li class="list-group-item To-do-list-group-item To-do-list-group-white" id= list${listNum}>
@@ -24,6 +26,19 @@ addList=()=>{
           </div>
         </li> `;
         list.innerHTML += listWhite;
+        /* currentList = document.getElementById(`list${listNum}`);
+        if(backgroundColor == 0)
+        {
+            currentList.classList.remove("background-$white");
+            currentList.classList.add("background-$pale-gray")
+            backgroundColor = 1;
+        }
+        else{
+            currentList.classList.remove("background-$pale-gray")
+            currentList.classList.add("background-$white");
+            backgroundColor = 0;
+        } */
+
         input.value = " ";
         listNum++;
         contTask();
@@ -74,3 +89,4 @@ contTask=()=>{
     elements.textContent = `Todos (${numTask})`;
 
 }
+
