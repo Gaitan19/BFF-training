@@ -68,24 +68,27 @@ filterList = (x) => {
   }
 };
 
-editList = (listId) => {
+/* editList = (listId) => {
   let currentText = document.getElementById(`text${listId}`);
   let newText = prompt("Wanna Change task?", currentText.innerHTML);
   if (filterList(newText)) {
     currentText.innerHTML = newText;
   }
-};
+}; */
 
 deleteList = (listId) => {
   let current = document.getElementById(`text${listId}`).innerHTML;
-  let deleteConfirm = confirm(`Are you sure to delete ${current}?`);
-  if (deleteConfirm) {
+//   let deleteConfirm = confirm(`Are you sure to delete ${current}?`);
+    let c = document.getElementById(`list${listId}`);
+    c.parentNode.removeChild(c);
+    contTask();
+  /* if (deleteConfirm) {
     let c = document.getElementById(`list${listId}`);
     c.parentNode.removeChild(c);
     contTask();
   } else {
     console.log("Deletion cancelled");
-  }
+  } */
 };
 
 contTask = () => {
