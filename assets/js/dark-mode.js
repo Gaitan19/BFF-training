@@ -40,7 +40,6 @@ switchMode.addEventListener("change", () => {
         item.classList.add("dark-mode-checkBox");
     });
 
-
     mode = 0;
   }
   else {
