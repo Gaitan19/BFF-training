@@ -12,7 +12,12 @@ switchMode.addEventListener("change", () => {
     document.querySelector(".To-do-list-container-text").classList.add("dark-mode-container-text");
     document.querySelector(".switch-mode-icon").classList.add("fa-moon");
 
-    document.querySelector(".To-do-list-group-gray").classList.add("dark-mode-group-gray"); /*se repite */
+    var darkModeGray = document.querySelectorAll(".To-do-list-group-gray")/* .classList.add("dark-mode-group-gray"); */ /*se repite */
+    darkModeGray.forEach((item) =>
+    {
+        item.classList.add("dark-mode-group-gray");
+    });
+
     document.querySelector(".To-do-list-group-white").classList.add("dark-mode-group-white");/*se repite */
     document.querySelector(".To-do-list-text").classList.add("dark-mode-text");/*se repite */
     document.querySelector(".btn-success").classList.add("dark-mode-btn");/*se repite */
@@ -26,8 +31,14 @@ switchMode.addEventListener("change", () => {
     document.querySelector(".To-do-list-container").classList.remove("dark-mode-container");
     document.querySelector(".To-do-list-container-text").classList.remove("dark-mode-container-text");
     document.querySelector(".switch-mode-icon").classList.remove("fa-moon");
-    
-    document.querySelector(".To-do-list-group-gray").classList.remove("dark-mode-group-gray");/*se repite */
+
+    var darkModeGray = document.querySelectorAll(".To-do-list-group-gray")/* .classList.add("dark-mode-group-gray"); */ /*se repite */
+    darkModeGray.forEach((item) =>
+    {
+        item.classList.remove("dark-mode-group-gray");
+    });
+
+    // document.querySelector(".To-do-list-group-gray").classList.remove("dark-mode-group-gray");/*se repite */
     document.querySelector(".To-do-list-group-white").classList.remove("dark-mode-group-white");/*se repite */
     document.querySelector(".To-do-list-text").classList.remove("dark-mode-text");/*se repite */
     document.querySelector(".btn-success").classList.remove("dark-mode-btn");/*se repite */
