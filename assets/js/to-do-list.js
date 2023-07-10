@@ -4,6 +4,8 @@ let list = document.getElementById("list");
 let listNum = 0;
 let backColor = 2;
 
+let predefinedLoaded = false; // Variable para verificar si las tareas predefinidas ya han sido cargadas
+
 const predefinedTasks = [
   "Walk the dog",
   "Authenticate with passport-js",
@@ -11,6 +13,39 @@ const predefinedTasks = [
   "Create reddit website",
   "Store sessions on mongodb"
 ];
+
+// Cargar las tareas guardadas del almacenamiento local al iniciar la página
+window.addEventListener('load', () => {
+  const savedTasks = JSON.parse(localStorage.getItem('tasks'));
+  if (savedTasks) {
+    savedTasks.forEach(task => {
+      let listElement = createListElement(task);
+      list.appendChild(listElement);
+      listNum++;
+      contTask();
+      if (backColor === 2) {
+        backColor = 3;
+      } else {
+        backColor = 2;
+      }
+    });
+  }
+  // Mostrar las tareas predefinidas solo si no han sido cargadas previamente y no hay tareas guardadas en el almacenamiento local
+  if (!predefinedLoaded && (!savedTasks || savedTasks.length === 0)) {
+    predefinedTasks.forEach(task => {
+      let listElement = createListElement(task);
+      list.appendChild(listElement);
+      listNum++;
+      contTask();
+      if (backColor === 2) {
+        backColor = 3;
+      } else {
+        backColor = 2;
+      }
+    });
+    predefinedLoaded = true; // Actualizar el estado de las tareas predefinidas a cargadas
+  }
+});
 
 input.addEventListener('keydown', (event) => {
   if (event.key === 'Enter') {
@@ -40,6 +75,7 @@ addList = () => {
     } else {
       backColor = 2;
     }
+    saveTasksToLocalStorage();
   }
 };
 
@@ -110,6 +146,7 @@ updateList = (listId) => {
       <span class="fa-sharp fa-solid fa-paper-plane To-do-list-submit-format"></span>
     `;
     submitButton.setAttribute('onclick', 'addList()');
+    saveTasksToLocalStorage();
   } else {
     alert("Please enter a task");
   }
@@ -120,6 +157,7 @@ deleteList = (listId) => {
   let c = document.getElementById(`list${listId}`);
   c.parentNode.removeChild(c);
   contTask();
+  saveTasksToLocalStorage();
 };
 
 contTask = () => {
@@ -130,18 +168,8 @@ contTask = () => {
   elements.textContent = `Todos (${numTask})`;
 };
 
-initializePredefinedTasks = () => {
-  for (let i = 0; i < predefinedTasks.length; i++) {
-    let listElement = createListElement(predefinedTasks[i]);
-    list.appendChild(listElement);
-    listNum++;
-    contTask();
-    if (backColor === 2) {
-      backColor = 3;
-    } else {
-      backColor = 2;
-    }
-  }
+saveTasksToLocalStorage = () => {
+  const taskElements = list.querySelectorAll('.To-do-list-text');
+  const tasks = Array.from(taskElements).map(taskElement => taskElement.textContent);
+  localStorage.setItem('tasks', JSON.stringify(tasks));
 };
-
-initializePredefinedTasks();
