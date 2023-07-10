@@ -4,7 +4,6 @@ let mode = 1;
 switchMode.addEventListener("change", () => {
   if (mode == 1) 
   {
-   
     document.querySelector(".switch-mode-icon").classList.remove("fa-sun");
     document.querySelector(".To-do-list").classList.add("dark-mode");
     document.querySelector(".To-do-list-container").classList.add("dark-mode-container");
