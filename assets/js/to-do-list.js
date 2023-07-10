@@ -12,6 +12,21 @@ const predefinedTasks = [
   "Store sessions on mongodb"
 ];
 
+input.addEventListener('keydown', (event) => {
+  if (event.key === 'Enter') {
+    if (input.value && input.value.length > 1) {
+      if (input.classList.contains('editing')) {
+        const editingTaskId = parseInt(input.getAttribute('data-task-id'));
+        updateList(editingTaskId);
+      } else {
+        addList();
+      }
+    } else {
+      alert("Please enter a task");
+    }
+  }
+});
+
 addList = () => {
   let inputText = filterList(input.value);
   if (inputText) {
@@ -68,27 +83,43 @@ filterList = (x) => {
   }
 };
 
-/* editList = (listId) => {
+editList = (listId) => {
   let currentText = document.getElementById(`text${listId}`);
-  let newText = prompt("Wanna Change task?", currentText.innerHTML);
-  if (filterList(newText)) {
-    currentText.innerHTML = newText;
+  input.value = currentText.textContent.trim();
+  input.classList.add('editing');
+  input.setAttribute('data-task-id', listId);
+  let submitButton = document.querySelector('.To-do-list-submit');
+  submitButton.innerHTML = `
+    <span class="To-do-list-submit-format">Edit</span>
+    <span class="fa-sharp fa-solid fa-edit To-do-list-submit-format"></span>
+  `;
+  submitButton.setAttribute('onclick', `updateList(${listId})`);
+};
+
+updateList = (listId) => {
+  let newText = input.value;
+  if (newText && newText.length > 1) {
+    let currentText = document.getElementById(`text${listId}`);
+    currentText.textContent = newText;
+    input.value = "";
+    input.classList.remove('editing');
+    input.removeAttribute('data-task-id');
+    let submitButton = document.querySelector('.To-do-list-submit');
+    submitButton.innerHTML = `
+      <span class="To-do-list-submit-format">Submit</span>
+      <span class="fa-sharp fa-solid fa-paper-plane To-do-list-submit-format"></span>
+    `;
+    submitButton.setAttribute('onclick', 'addList()');
+  } else {
+    alert("Please enter a task");
   }
-}; */
+};
 
 deleteList = (listId) => {
   let current = document.getElementById(`text${listId}`).innerHTML;
-//   let deleteConfirm = confirm(`Are you sure to delete ${current}?`);
-    let c = document.getElementById(`list${listId}`);
-    c.parentNode.removeChild(c);
-    contTask();
-  /* if (deleteConfirm) {
-    let c = document.getElementById(`list${listId}`);
-    c.parentNode.removeChild(c);
-    contTask();
-  } else {
-    console.log("Deletion cancelled");
-  } */
+  let c = document.getElementById(`list${listId}`);
+  c.parentNode.removeChild(c);
+  contTask();
 };
 
 contTask = () => {
