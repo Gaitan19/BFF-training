@@ -53,6 +53,14 @@
         outline: none;
         padding: 24px;
         width: 77%;
+
+        &-edit{
+            display: inline;
+            width: 100%;
+            padding: 0px;
+            font-size: 20px;
+            color: #333;
+        }
     }
 
     &-submit {

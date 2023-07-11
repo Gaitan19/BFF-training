@@ -52,7 +52,7 @@ input.addEventListener('keydown', (event) => {
     if (input.value && input.value.length > 1) {
       if (input.classList.contains('editing')) {
         const editingTaskId = parseInt(input.getAttribute('data-task-id'));
-        updateList(editingTaskId);
+        updateList(editingTaskId, input.value);
       } else {
         addList();
       }
@@ -121,31 +121,25 @@ filterList = (x) => {
 
 editList = (listId) => {
   let currentText = document.getElementById(`text${listId}`);
-  input.value = currentText.textContent.trim();
-  input.classList.add('editing');
-  input.setAttribute('data-task-id', listId);
-  let submitButton = document.querySelector('.To-do-list-submit');
-  submitButton.innerHTML = `
-    <span class="To-do-list-submit-format">Edit</span>
-    <span class="fa-sharp fa-solid fa-edit To-do-list-submit-format"></span>
-  `;
-  submitButton.setAttribute('onclick', `updateList(${listId})`);
+  let currentTextInput = document.createElement('input');
+  currentTextInput.value = currentText.textContent;
+  currentTextInput.classList.add('To-do-list-input'); // Agregar la clase de estilo
+  currentTextInput.classList.add('To-do-list-input-edit'); // Agregar la clase de estilo
+
+  currentText.replaceWith(currentTextInput);
+  currentTextInput.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+      let newText = currentTextInput.value;
+      currentTextInput.replaceWith(currentText);
+      updateList(listId, newText);
+    }
+  });
 };
 
-updateList = (listId) => {
-  let newText = input.value;
+updateList = (listId, newText) => {
   if (newText && newText.length > 1) {
     let currentText = document.getElementById(`text${listId}`);
     currentText.textContent = newText;
-    input.value = "";
-    input.classList.remove('editing');
-    input.removeAttribute('data-task-id');
-    let submitButton = document.querySelector('.To-do-list-submit');
-    submitButton.innerHTML = `
-      <span class="To-do-list-submit-format">Submit</span>
-      <span class="fa-sharp fa-solid fa-paper-plane To-do-list-submit-format"></span>
-    `;
-    submitButton.setAttribute('onclick', 'addList()');
     saveTasksToLocalStorage();
   } else {
     alert("Please enter a task");
