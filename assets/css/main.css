@@ -9376,11 +9376,17 @@ h1, .h1, h2, .h2, h3, .h3 {
     padding: 24px;
     width: 77%; }
     .To-do-list-input-edit {
+      color: #333;
+      /* display: inline;
+            width: 100%;
+            padding: 0px;
+            font-size: 20px;
+            color: #333; */
       display: inline;
-      width: 100%;
-      padding: 0px;
       font-size: 20px;
-      color: #333; }
+      padding: 0px;
+      padding: 2px 153px 0px 0px;
+      width: auto; }
   .To-do-list-submit {
     background-color: #F89B1C;
     padding: 24px 16px;

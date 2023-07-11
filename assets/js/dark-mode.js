@@ -2,7 +2,12 @@ const switchMode = document.querySelector(".switch-mode");
 let mode = 1;
 
 switchMode.addEventListener("change", () => {
-  if (mode == 1) 
+    changeMode();
+  
+});
+
+changeMode = () => {
+    if (mode == 1) 
   {
     document.querySelector(".switch-mode-icon").classList.remove("fa-sun");
     document.querySelector(".To-do-list").classList.add("dark-mode");
@@ -83,5 +88,5 @@ switchMode.addEventListener("change", () => {
 
     mode = 1;
   }
-});
+}
 

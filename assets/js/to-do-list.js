@@ -158,7 +158,7 @@ contTask = () => {
   let taskElements = list.querySelectorAll('li');
   let numTask = taskElements.length;
 
-  elements.value = " ";
+  elements.value = "";
   elements.textContent = `Todos (${numTask})`;
 };
 
