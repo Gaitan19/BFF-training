@@ -19,7 +19,7 @@ window.addEventListener('load', () => {
   const savedTasks = JSON.parse(localStorage.getItem('tasks'));
   if (savedTasks) {
     savedTasks.forEach(task => {
-      let listElement = createListElement(task);
+      let listElement = createListElement(task.text, task.completed);
       list.appendChild(listElement);
       listNum++;
       contTask();
@@ -79,7 +79,7 @@ addList = () => {
   }
 };
 
-createListElement = (text) => {
+createListElement = (text, completed = false) => {
   let listItemClass = backColor % 2 === 0 ? 'To-do-list-group-gray' : 'To-do-list-group-white';
 
   let listElement = document.createElement('li');
@@ -88,8 +88,8 @@ createListElement = (text) => {
 
   let listItemContent = `
     <div class="form-check">
-      <input class="form-check-input To-do-list-check" type="checkbox" id="flexCheckDefault${listNum}">
-      <label class="form-check-label To-do-list-text" id="text${listNum}">
+      <input class="form-check-input To-do-list-check" type="checkbox" id="flexCheckDefault${listNum}" ${completed ? 'checked' : ''} onchange="toggleTask(this)">
+      <label class="form-check-label To-do-list-text ${completed ? 'completed' : ''}" id="text${listNum}">
         ${text}
       </label>
     </div>
@@ -169,7 +169,20 @@ contTask = () => {
 };
 
 saveTasksToLocalStorage = () => {
+  const tasks = [];
   const taskElements = list.querySelectorAll('.To-do-list-text');
-  const tasks = Array.from(taskElements).map(taskElement => taskElement.textContent);
+  taskElements.forEach(taskElement => {
+    const task = {
+      text: taskElement.textContent,
+      completed: taskElement.classList.contains('completed')
+    };
+    tasks.push(task);
+  });
   localStorage.setItem('tasks', JSON.stringify(tasks));
+};
+
+toggleTask = (checkbox) => {
+  let label = checkbox.nextElementSibling;
+  label.classList.toggle('completed');
+  saveTasksToLocalStorage();
 };
