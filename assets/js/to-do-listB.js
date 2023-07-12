@@ -2,7 +2,6 @@ let elements = document.getElementById("contElements");
 let input = document.getElementById("inputText");
 let list = document.getElementById("list");
 let listNum = 0;
-let backColor = 2;
 let muestra;
 
 window.addEventListener('load', () => {
@@ -13,15 +12,9 @@ window.addEventListener('load', () => {
       list.appendChild(listElement);
       listNum++;
       contTask();
-      if (backColor === 2) {
-        backColor = 3;
-      } else {
-        backColor = 2;
-      }
     });
     muestra = savedTasks;
     changeBackground();
-
   }
 });
 
@@ -49,21 +42,13 @@ addList = () => {
     input.value = "";
     listNum++;
     contTask();
-    if (backColor === 2) {
-      backColor = 3;
-    } else {
-      backColor = 2;
-    }
     saveTasksToLocalStorage();
-
   }
   changeBackground();
 
 };
 
 createListElement = (text, completed = false) => {
-  let listItemClass = backColor % 2 === 0 ? 'To-do-list-group-gray' : 'To-do-list-group-white';
-
   let listElement = document.createElement('li');
   listElement.setAttribute('class', `list-group-item To-do-list-group-item`);
   listElement.setAttribute('id', `list${listNum}`);
@@ -196,13 +181,3 @@ toggleTask = (checkbox) => {
   label.classList.toggle('completed');
   saveTasksToLocalStorage();
 };
-
-pruba = () => {
-  console.log("hola  mundo");
-};
-
-pruba();
-
-// pruba = "hola";
-
-console.log(pruba)
