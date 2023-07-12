@@ -96,8 +96,8 @@ filterList = (x) => {
   if (x) {
     if (x.length > 1 && x.length <= 44) {
       return x;
-    } if (x.length < 1) {
-      alert("Please enter a task");
+    } else if (x.length <= 1) {
+      alert("the task must have more than one character");
     } else {
       alert("the task must have less than 45 characters");
     }
