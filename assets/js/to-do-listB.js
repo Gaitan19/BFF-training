@@ -110,8 +110,8 @@ editList = (listId) => {
   let currentText = document.getElementById(`text${listId}`);
   let currentTextInput = document.createElement('input');
   currentTextInput.value = currentText.textContent;
-  currentTextInput.classList.add('To-do-list-input'); // Agregar la clase de estilo
-  currentTextInput.classList.add('To-do-list-input-edit'); // Agregar la clase de estilo
+  currentTextInput.classList.add('To-do-list-input');
+  currentTextInput.classList.add('To-do-list-input-edit');
   if (mode === 'dark') {
     currentTextInput.classList.add("dark-mode-text");
   } else {
