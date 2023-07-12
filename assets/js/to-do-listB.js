@@ -113,12 +113,9 @@ editList = (listId) => {
   currentTextInput.classList.add('To-do-list-input'); // Agregar la clase de estilo
   currentTextInput.classList.add('To-do-list-input-edit'); // Agregar la clase de estilo
   if (mode === 'dark') {
-    // currentTextInput.style.color = '#fff';
     currentTextInput.classList.add("dark-mode-text");
   } else {
-    // currentTextInput.style.color = '#333';
     currentTextInput.classList.remove("dark-mode-text");
-
   }
 
   currentText.replaceWith(currentTextInput);
@@ -131,8 +128,6 @@ editList = (listId) => {
       }
     }
   });
-
-  
 };
 
 updateList = (listId, newText) => {

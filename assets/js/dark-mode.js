@@ -28,7 +28,7 @@ function enableDarkMode() {
     document.querySelector(".To-do-list").classList.add("dark-mode");
     document.querySelector(".To-do-list-container").classList.add("dark-mode-container");
     document.querySelector(".To-do-list-container-text").classList.add("dark-mode-container-text");
-   
+
     var darkModeEditText = document.querySelectorAll(".To-do-list-input-edit");
     darkModeEditText.forEach((item) => {
         item.classList.add("dark-mode-text");
@@ -58,9 +58,6 @@ function enableDarkMode() {
     darkModeCheck.forEach((item) => {
         item.classList.add("dark-mode-checkBox");
     });
-
-    
-    
 }
 
 function enableLightMode() {
@@ -70,7 +67,6 @@ function enableLightMode() {
     document.querySelector(".To-do-list-container").classList.remove("dark-mode-container");
     document.querySelector(".To-do-list-container-text").classList.remove("dark-mode-container-text");
 
-    
     var darkModeGray = document.querySelectorAll(".dark-mode-group-gray");
     darkModeGray.forEach((item) => {
         item.classList.remove("dark-mode-group-gray");
@@ -100,12 +96,10 @@ function enableLightMode() {
     darkModeEditText.forEach((item) => {
         item.classList.remove("dark-mode-text");
     });
-
 }
 
 function saveMode() {
     localStorage.setItem("mode", mode);
 }
 
-// Llamamos a la función ChannelMergerNodeMode al cargar la página para aplicar los estilos correspondientes
 document.addEventListener("load", ChannelMergerNodeMode);
