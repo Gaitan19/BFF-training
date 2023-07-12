@@ -60,7 +60,7 @@ createListElement = (text, completed = false) => {
   let listItemClass = backColor % 2 === 0 ? 'To-do-list-group-gray' : 'To-do-list-group-white';
 
   let listElement = document.createElement('li');
-  listElement.setAttribute('class', `list-group-item To-do-list-group-item ${listItemClass}`);
+  listElement.setAttribute('class', `list-group-item To-do-list-group-item`);
   listElement.setAttribute('id', `list${listNum}`);
 
   let listItemContent = `
@@ -80,12 +80,12 @@ createListElement = (text, completed = false) => {
 
   listElement.innerHTML = listItemContent;
 
-  if (mode === 'dark') {
+ /*  if (mode === 'dark') {
     listElement.classList.add('dark-mode-group-gray');
     if (listItemClass === 'To-do-list-group-white') {
       listElement.classList.add('dark-mode-group-white');
     }
-  }
+  } */
 
   return listElement;
 };
@@ -159,6 +159,18 @@ contTask = () => {
   elements.textContent = `Todos (${numTask})`;
 };
 
+const changeBackground = () => {
+  let cont = 0;
+  let numTask = document.querySelectorAll("li")
+  // let listItemClass = backColor % 2 === 0 ? 'To-do-list-group-gray' : 'To-do-list-group-white';
+  numTask.forEach((item) => {
+    let listItemClass = cont % 2 === 0 ? 'To-do-list-group-gray' : 'To-do-list-group-white';
+    item.classList.add(listItemClass);
+    cont++;
+  });
+
+};
+
 saveTasksToLocalStorage = () => {
   const tasks = [];
   const taskElements = list.querySelectorAll('.To-do-list-text');
@@ -177,3 +189,9 @@ toggleTask = (checkbox) => {
   label.classList.toggle('completed');
   saveTasksToLocalStorage();
 };
+
+pruba = () => {
+  console.log("hola  mundo");
+};
+
+pruba();
