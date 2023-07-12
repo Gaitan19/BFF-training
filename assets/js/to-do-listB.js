@@ -34,7 +34,7 @@ input.addEventListener('keydown', (event) => {
   }
 });
 
-addList = () => {
+const addList = () => {
   let inputText = filterList(input.value);
   if (inputText) {
     let listElement = createListElement(inputText);
@@ -48,7 +48,7 @@ addList = () => {
 
 };
 
-createListElement = (text, completed = false) => {
+const createListElement = (text, completed = false) => {
   let listElement = document.createElement('li');
   listElement.setAttribute('class', `list-group-item To-do-list-group-item`);
   listElement.setAttribute('id', `list${listNum}`);
@@ -73,7 +73,7 @@ createListElement = (text, completed = false) => {
   return listElement;
 };
 
-filterList = (x) => {
+const filterList = (x) => {
   if (x) {
     if (x.length > 1 && x.length <= 44) {
       return x;
@@ -87,7 +87,7 @@ filterList = (x) => {
   }
 };
 
-editList = (listId) => {
+const editList = (listId) => {
   let currentText = document.getElementById(`text${listId}`);
   let currentTextInput = document.createElement('input');
   currentTextInput.value = currentText.textContent;
@@ -111,7 +111,7 @@ editList = (listId) => {
   });
 };
 
-updateList = (listId, newText) => {
+const updateList = (listId, newText) => {
   if (newText && newText.length > 1) {
     let currentText = document.getElementById(`text${listId}`);
     currentText.textContent = newText;
@@ -126,7 +126,7 @@ updateList = (listId, newText) => {
   }
 };
 
-deleteList = (listId) => {
+const deleteList = (listId) => {
   let current = document.getElementById(`text${listId}`).innerHTML;
   let c = document.getElementById(`list${listId}`);
   c.parentNode.removeChild(c);
@@ -135,7 +135,7 @@ deleteList = (listId) => {
   changeBackground();
 };
 
-contTask = () => {
+const contTask = () => {
   let taskElements = list.querySelectorAll('li');
   let numTask = taskElements.length;
 
@@ -163,7 +163,7 @@ const changeBackground = () => {
 
 };
 
-saveTasksToLocalStorage = () => {
+const saveTasksToLocalStorage = () => {
   const tasks = [];
   const taskElements = list.querySelectorAll('.To-do-list-text');
   taskElements.forEach(taskElement => {
@@ -176,7 +176,7 @@ saveTasksToLocalStorage = () => {
   localStorage.setItem('tasks', JSON.stringify(tasks));
 };
 
-toggleTask = (checkbox) => {
+const toggleTask = (checkbox) => {
   let label = checkbox.nextElementSibling;
   label.classList.toggle('completed');
   saveTasksToLocalStorage();

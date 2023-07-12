@@ -29,39 +29,38 @@ function enableDarkMode() {
     document.querySelector(".To-do-list-container").classList.add("dark-mode-container");
     document.querySelector(".To-do-list-container-text").classList.add("dark-mode-container-text");
 
-    var darkModeEditText = document.querySelectorAll(".To-do-list-input-edit");
+    const darkModeEditText = document.querySelectorAll(".To-do-list-input-edit");
     darkModeEditText.forEach((item) => {
         item.classList.add("dark-mode-text");
     });
 
-    var darkModeGray = document.querySelectorAll(".To-do-list-group-gray");
+    const darkModeGray = document.querySelectorAll(".To-do-list-group-gray");
     darkModeGray.forEach((item) => {
         item.classList.add("dark-mode-group-gray");
     });
 
-    var darkModeWhi = document.querySelectorAll(".To-do-list-group-white");
+    const darkModeWhi = document.querySelectorAll(".To-do-list-group-white");
     darkModeWhi.forEach((item) => {
         item.classList.add("dark-mode-group-white");
     });
 
-    var darkModeText = document.querySelectorAll(".To-do-list-text");
+    const darkModeText = document.querySelectorAll(".To-do-list-text");
     darkModeText.forEach((item) => {
         item.classList.add("dark-mode-text");
     });
 
-    var darkModeBtn = document.querySelectorAll(".btn-success");
+    const darkModeBtn = document.querySelectorAll(".btn-success");
     darkModeBtn.forEach((item) => {
         item.classList.add("dark-mode-btn");
     });
 
-    var darkModeCheck = document.querySelectorAll(".To-do-list-check");
+    const darkModeCheck = document.querySelectorAll(".To-do-list-check");
     darkModeCheck.forEach((item) => {
         item.classList.add("dark-mode-checkBox");
     });
 }
 
 function enableLightMode() {
-
     
     document.querySelector(".switch-mode-icon").classList.remove("fa-moon");
     document.querySelector(".switch-mode-icon").classList.add("fa-sun");
@@ -74,27 +73,27 @@ function enableLightMode() {
         item.classList.remove("dark-mode-group-gray");
     });
 
-    var darkModeWhi = document.querySelectorAll(".dark-mode-group-white");
+    const darkModeWhi = document.querySelectorAll(".dark-mode-group-white");
     darkModeWhi.forEach((item) => {
         item.classList.remove("dark-mode-group-white");
     });
 
-    var darkModeText = document.querySelectorAll(".To-do-list-text");
+    const darkModeText = document.querySelectorAll(".To-do-list-text");
     darkModeText.forEach((item) => {
         item.classList.remove("dark-mode-text");
     });
 
-    var darkModeBtn = document.querySelectorAll(".btn-success");
+    const darkModeBtn = document.querySelectorAll(".btn-success");
     darkModeBtn.forEach((item) => {
         item.classList.remove("dark-mode-btn");
     });
 
-    var darkModeCheck = document.querySelectorAll(".To-do-list-check");
+    const darkModeCheck = document.querySelectorAll(".To-do-list-check");
     darkModeCheck.forEach((item) => {
         item.classList.remove("dark-mode-checkBox");
     });
 
-    var darkModeEditText = document.querySelectorAll(".To-do-list-input-edit");
+    const darkModeEditText = document.querySelectorAll(".To-do-list-input-edit");
     darkModeEditText.forEach((item) => {
         item.classList.remove("dark-mode-text");
     });
