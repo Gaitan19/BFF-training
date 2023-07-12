@@ -3,16 +3,7 @@ let input = document.getElementById("inputText");
 let list = document.getElementById("list");
 let listNum = 0;
 let backColor = 2;
-
-let predefinedLoaded = false; // Variable para verificar si las tareas predefinidas ya han sido cargadas
-
-const predefinedTasks = [
-  "Walk the dog",
-  "Authenticate with passport-js",
-  "Validate register input",
-  "Create reddit website",
-  "Store sessions on mongodb"
-];
+let muestra;
 
 // Cargar las tareas guardadas del almacenamiento local al iniciar la página
 
@@ -30,21 +21,7 @@ window.addEventListener('load', () => {
         backColor = 2;
       }
     });
-  }
-  // Mostrar las tareas predefinidas solo si no han sido cargadas previamente y no hay tareas guardadas en el almacenamiento local
-  if (!predefinedLoaded && (!savedTasks || savedTasks.length === 0)) {
-    predefinedTasks.forEach(task => {
-      let listElement = createListElement(task);
-      list.appendChild(listElement);
-      listNum++;
-      contTask();
-      if (backColor === 2) {
-        backColor = 3;
-      } else {
-        backColor = 2;
-      }
-    });
-    predefinedLoaded = true; // Actualizar el estado de las tareas predefinidas a cargadas
+    muestra = savedTasks;
   }
 });
 
@@ -90,9 +67,7 @@ createListElement = (text, completed = false) => {
   let listItemContent = `
     <div class="form-check">
       <input class="form-check-input To-do-list-check ${mode === 'dark' ? 'dark-mode-checkBox' : ''}" type="checkbox" id="flexCheckDefault${listNum}" ${completed ? 'checked' : ''} onchange="toggleTask(this)">
-      <label class="form-check-label To-do-list-text ${completed ? 'completed' : ''} ${mode === 'dark' ? 'dark-mode-text' : ''}" id="text${listNum}">
-        ${text}
-      </label>
+      <label class="form-check-label To-do-list-text ${completed ? 'completed' : ''} ${mode === 'dark' ? 'dark-mode-text' : ''}" id="text${listNum}">${text}</label>
     </div>
     <div class="To-do-list-group-buttons">
       <button type="button" class="btn btn-success To-do-list-button ${mode === 'dark' ? 'dark-mode-btn' : ''}" onclick="editList(${listNum})">
@@ -115,12 +90,15 @@ createListElement = (text, completed = false) => {
 
   return listElement;
 };
+
 filterList = (x) => {
   if (x) {
-    if (x.length > 1) {
+    if (x.length > 1 && x.length <= 44) {
       return x;
-    } else {
+    } if (x.length < 1) {
       alert("Please enter a task");
+    } else {
+      alert("the task must have less than 45 characters");
     }
   } else {
     return false;
@@ -133,13 +111,18 @@ editList = (listId) => {
   currentTextInput.value = currentText.textContent;
   currentTextInput.classList.add('To-do-list-input'); // Agregar la clase de estilo
   currentTextInput.classList.add('To-do-list-input-edit'); // Agregar la clase de estilo
+  if (mode === 'dark') {
+    currentTextInput.style.color = '#fff';
+  }
 
   currentText.replaceWith(currentTextInput);
   currentTextInput.addEventListener('keydown', (event) => {
     if (event.key === 'Enter') {
-      let newText = currentTextInput.value;
-      currentTextInput.replaceWith(currentText);
-      updateList(listId, newText);
+      let newText = filterList(currentTextInput.value);
+      if (newText) {
+        currentTextInput.replaceWith(currentText);
+        updateList(listId, newText);
+      }
     }
   });
 };
