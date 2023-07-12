@@ -61,13 +61,15 @@ function enableDarkMode() {
 }
 
 function enableLightMode() {
+
+    
     document.querySelector(".switch-mode-icon").classList.remove("fa-moon");
     document.querySelector(".switch-mode-icon").classList.add("fa-sun");
     document.querySelector(".To-do-list").classList.remove("dark-mode");
     document.querySelector(".To-do-list-container").classList.remove("dark-mode-container");
     document.querySelector(".To-do-list-container-text").classList.remove("dark-mode-container-text");
 
-    var darkModeGray = document.querySelectorAll(".dark-mode-group-gray");
+    const darkModeGray = document.querySelectorAll(".dark-mode-group-gray");
     darkModeGray.forEach((item) => {
         item.classList.remove("dark-mode-group-gray");
     });

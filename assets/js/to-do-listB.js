@@ -85,13 +85,6 @@ createListElement = (text, completed = false) => {
 
   listElement.innerHTML = listItemContent;
 
-  /*  if (mode === 'dark') {
-     listElement.classList.add('dark-mode-group-gray');
-     if (listItemClass === 'To-do-list-group-white') {
-       listElement.classList.add('dark-mode-group-white');
-     }
-   } */
-
   return listElement;
 };
 
@@ -168,10 +161,18 @@ contTask = () => {
 const changeBackground = () => {
   let cont = 0;
   let numTask = document.querySelectorAll("li")
-  // let listItemClass = backColor % 2 === 0 ? 'To-do-list-group-gray' : 'To-do-list-group-white';
   numTask.forEach((item) => {
     let listItemClass = cont % 2 === 0 ? 'To-do-list-group-gray' : 'To-do-list-group-white';
     item.classList.add(listItemClass);
+
+    if (mode === 'dark') {
+      if (listItemClass === 'To-do-list-group-white') {
+        item.classList.add('dark-mode-group-white');
+      } else {
+        item.classList.add('dark-mode-group-gray');
+      }
+    }
+
     cont++;
   });
 
@@ -202,6 +203,6 @@ pruba = () => {
 
 pruba();
 
-pruba = "hola";
+// pruba = "hola";
 
 console.log(pruba)
