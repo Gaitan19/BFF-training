@@ -89,13 +89,13 @@ createListElement = (text, completed = false) => {
 
   let listItemContent = `
     <div class="form-check">
-      <input class="form-check-input To-do-list-check" type="checkbox" id="flexCheckDefault${listNum}" ${completed ? 'checked' : ''} onchange="toggleTask(this)">
-      <label class="form-check-label To-do-list-text ${completed ? 'completed' : ''}" id="text${listNum}">
+      <input class="form-check-input To-do-list-check ${mode === 'dark' ? 'dark-mode-checkBox' : ''}" type="checkbox" id="flexCheckDefault${listNum}" ${completed ? 'checked' : ''} onchange="toggleTask(this)">
+      <label class="form-check-label To-do-list-text ${completed ? 'completed' : ''} ${mode === 'dark' ? 'dark-mode-text' : ''}" id="text${listNum}">
         ${text}
       </label>
     </div>
     <div class="To-do-list-group-buttons">
-      <button type="button" class="btn btn-success To-do-list-button" onclick="editList(${listNum})">
+      <button type="button" class="btn btn-success To-do-list-button ${mode === 'dark' ? 'dark-mode-btn' : ''}" onclick="editList(${listNum})">
         <span class="fa-solid fa-pen-to-square To-do-list-button-icon"></span>
       </button>
       <button type="button" class="btn btn-danger To-do-list-button" onclick="deleteList(${listNum})">
@@ -103,28 +103,18 @@ createListElement = (text, completed = false) => {
       </button>
     </div>
   `;
+
   listElement.innerHTML = listItemContent;
 
   if (mode === 'dark') {
     listElement.classList.add('dark-mode-group-gray');
-    listElement.querySelector('.To-do-list-check').classList.add('dark-mode-checkBox');
-    listElement.querySelector('.To-do-list-text').classList.add('dark-mode-text');
-    listElement.querySelector('.btn-success').classList.add('dark-mode-btn');
-    var darkModeGray = document.querySelectorAll(".To-do-list-group-gray");
-    darkModeGray.forEach((item) => {
-      item.classList.add("dark-mode-group-gray");
-    });
-
-    var darkModeWhi = document.querySelectorAll(".To-do-list-group-white");
-    darkModeWhi.forEach((item) => {
-      item.classList.add("dark-mode-group-white");
-    });
-
+    if (listItemClass === 'To-do-list-group-white') {
+      listElement.classList.add('dark-mode-group-white');
+    }
   }
 
   return listElement;
 };
-
 filterList = (x) => {
   if (x) {
     if (x.length > 1) {
