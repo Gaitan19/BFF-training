@@ -2,7 +2,7 @@ var switchMode = document.querySelector(".switch-mode");
 let mode = localStorage.getItem("mode") || "light";
 
 switchMode.checked = mode === "dark";
-applyMode();
+ChannelMergerNodeMode();
 
 switchMode.addEventListener("change", () => {
   if (switchMode.checked) {
@@ -10,11 +10,11 @@ switchMode.addEventListener("change", () => {
   } else {
     mode = "light";
   }
-  applyMode();
+  ChannelMergerNodeMode();
   saveMode();
 });
 
-function applyMode() {
+function ChannelMergerNodeMode() {
   if (mode == "light") {
     enableLightMode();
   } else {
@@ -92,5 +92,5 @@ function saveMode() {
   localStorage.setItem("mode", mode);
 }
 
-// Llamamos a la función applyMode al cargar la página para aplicar los estilos correspondientes
-document.addEventListener("load", applyMode);
+// Llamamos a la función ChannelMergerNodeMode al cargar la página para aplicar los estilos correspondientes
+document.addEventListener("load", ChannelMergerNodeMode);
