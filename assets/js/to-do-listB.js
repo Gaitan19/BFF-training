@@ -5,8 +5,6 @@ let listNum = 0;
 let backColor = 2;
 let muestra;
 
-// Cargar las tareas guardadas del almacenamiento local al iniciar la página
-
 window.addEventListener('load', () => {
   const savedTasks = JSON.parse(localStorage.getItem('tasks'));
   if (savedTasks) {
