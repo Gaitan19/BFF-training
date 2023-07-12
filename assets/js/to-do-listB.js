@@ -16,7 +16,8 @@ const predefinedTasks = [
 
 // Cargar las tareas guardadas del almacenamiento local al iniciar la página
 
- window.addEventListener('load', () => { const savedTasks = JSON.parse(localStorage.getItem('tasks'));
+window.addEventListener('load', () => {
+  const savedTasks = JSON.parse(localStorage.getItem('tasks'));
   if (savedTasks) {
     savedTasks.forEach(task => {
       let listElement = createListElement(task.text, task.completed);
@@ -103,6 +104,23 @@ createListElement = (text, completed = false) => {
     </div>
   `;
   listElement.innerHTML = listItemContent;
+
+  if (mode === 'dark') {
+    listElement.classList.add('dark-mode-group-gray');
+    listElement.querySelector('.To-do-list-check').classList.add('dark-mode-checkBox');
+    listElement.querySelector('.To-do-list-text').classList.add('dark-mode-text');
+    listElement.querySelector('.btn-success').classList.add('dark-mode-btn');
+    var darkModeGray = document.querySelectorAll(".To-do-list-group-gray");
+    darkModeGray.forEach((item) => {
+      item.classList.add("dark-mode-group-gray");
+    });
+
+    var darkModeWhi = document.querySelectorAll(".To-do-list-group-white");
+    darkModeWhi.forEach((item) => {
+      item.classList.add("dark-mode-group-white");
+    });
+
+  }
 
   return listElement;
 };
