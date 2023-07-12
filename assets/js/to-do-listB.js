@@ -20,6 +20,8 @@ window.addEventListener('load', () => {
       }
     });
     muestra = savedTasks;
+    changeBackground();
+
   }
 });
 
@@ -53,7 +55,10 @@ addList = () => {
       backColor = 2;
     }
     saveTasksToLocalStorage();
+
   }
+  changeBackground();
+
 };
 
 createListElement = (text, completed = false) => {
@@ -80,12 +85,12 @@ createListElement = (text, completed = false) => {
 
   listElement.innerHTML = listItemContent;
 
- /*  if (mode === 'dark') {
-    listElement.classList.add('dark-mode-group-gray');
-    if (listItemClass === 'To-do-list-group-white') {
-      listElement.classList.add('dark-mode-group-white');
-    }
-  } */
+  /*  if (mode === 'dark') {
+     listElement.classList.add('dark-mode-group-gray');
+     if (listItemClass === 'To-do-list-group-white') {
+       listElement.classList.add('dark-mode-group-white');
+     }
+   } */
 
   return listElement;
 };
@@ -149,6 +154,7 @@ deleteList = (listId) => {
   c.parentNode.removeChild(c);
   contTask();
   saveTasksToLocalStorage();
+  changeBackground();
 };
 
 contTask = () => {
@@ -195,3 +201,7 @@ pruba = () => {
 };
 
 pruba();
+
+pruba = "hola";
+
+console.log(pruba)
