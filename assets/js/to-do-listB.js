@@ -33,6 +33,7 @@ input.addEventListener('keydown', (event) => {
         updateList(editingTaskId, input.value);
       } else {
         addList();
+
       }
     } else {
       alert("Please enter a task");
@@ -112,7 +113,12 @@ editList = (listId) => {
   currentTextInput.classList.add('To-do-list-input'); // Agregar la clase de estilo
   currentTextInput.classList.add('To-do-list-input-edit'); // Agregar la clase de estilo
   if (mode === 'dark') {
-    currentTextInput.style.color = '#fff';
+    // currentTextInput.style.color = '#fff';
+    currentTextInput.classList.add("dark-mode-text");
+  } else {
+    // currentTextInput.style.color = '#333';
+    currentTextInput.classList.remove("dark-mode-text");
+
   }
 
   currentText.replaceWith(currentTextInput);
@@ -125,12 +131,19 @@ editList = (listId) => {
       }
     }
   });
+
+  
 };
 
 updateList = (listId, newText) => {
   if (newText && newText.length > 1) {
     let currentText = document.getElementById(`text${listId}`);
     currentText.textContent = newText;
+    if (mode === 'dark') {
+      currentText.classList.add("dark-mode-text");
+    } else {
+      currentText.classList.remove("dark-mode-text");
+    }
     saveTasksToLocalStorage();
   } else {
     alert("Please enter a task");
