@@ -1,5 +1,5 @@
 let switchMode = document.querySelector(".switch-mode");
-let mode = localStorage.getItem("mode") || "light";
+let mode = localStorage.getItem("mode");
 
 switchMode.checked = mode === "dark";
 ChannelMergerNodeMode();

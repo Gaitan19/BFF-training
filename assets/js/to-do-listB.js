@@ -18,16 +18,8 @@ window.addEventListener('load', () => {
 
 input.addEventListener('keydown', (event) => {
   if (event.key === 'Enter') {
-    if (input.value && input.value.length > 1) {
-      if (input.classList.contains('editing')) {
-        const editingTaskId = parseInt(input.getAttribute('data-task-id'));
-        updateList(editingTaskId, input.value);
-      } else {
-        addList();
-
-      }
-    } else {
-      alert("Please enter a task");
+    if (input.value && input.value.length > 1 && input.classList.contains('To-do-list-input')) {
+      addList();
     }
   }
 });
@@ -125,7 +117,7 @@ const updateList = (listId, newText) => {
 };
 
 const deleteList = (listId) => {
-  let current = document.getElementById(`text${listId}`).innerHTML;
+  // let current = document.getElementById(`text${listId}`).innerHTML;
   let c = document.getElementById(`list${listId}`);
 
   c.parentNode.removeChild(c);
