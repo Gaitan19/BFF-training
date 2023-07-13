@@ -151,7 +151,6 @@ const changeBackground = () => {
     let listItemClass = cont % 2 == 0 ? 'To-do-list-group-white' : 'To-do-list-group-gray';
     item.classList.remove('To-do-list-group-white');
     item.classList.remove('To-do-list-group-gray');
-
     item.classList.add(listItemClass);
 
     if (mode === 'dark') {
