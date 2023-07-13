@@ -4,6 +4,8 @@ let mode = localStorage.getItem("mode") || "light";
 switchMode.checked = mode === "dark";
 ChannelMergerNodeMode();
 
+document.addEventListener("load", ChannelMergerNodeMode);
+
 switchMode.addEventListener("change", () => {
     if (switchMode.checked) {
         mode = "dark";
@@ -104,4 +106,3 @@ function saveMode() {
     localStorage.setItem("mode", mode);
 }
 
-document.addEventListener("load", ChannelMergerNodeMode);

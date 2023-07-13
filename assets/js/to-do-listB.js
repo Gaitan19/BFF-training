@@ -2,7 +2,6 @@ let elements = document.getElementById("contElements");
 let input = document.getElementById("inputText");
 let list = document.getElementById("list");
 let listNum = 0;
-let muestra;
 
 window.addEventListener('load', () => {
   const savedTasks = JSON.parse(localStorage.getItem('tasks'));
@@ -13,7 +12,6 @@ window.addEventListener('load', () => {
       listNum++;
       contTask();
     });
-    muestra = savedTasks;
     changeBackground();
   }
 });
