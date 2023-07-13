@@ -129,10 +129,11 @@ const updateList = (listId, newText) => {
 const deleteList = (listId) => {
   let current = document.getElementById(`text${listId}`).innerHTML;
   let c = document.getElementById(`list${listId}`);
+
   c.parentNode.removeChild(c);
+  changeBackground();
   contTask();
   saveTasksToLocalStorage();
-  changeBackground();
 };
 
 const contTask = () => {
@@ -144,20 +145,25 @@ const contTask = () => {
 };
 
 const changeBackground = () => {
-  let cont = 0;
-  let numTask = document.querySelectorAll("li")
+  let cont = 1;
+  let numTask = document.querySelectorAll('.To-do-list-group-item')
   numTask.forEach((item) => {
-    let listItemClass = cont % 2 === 0 ? 'To-do-list-group-gray' : 'To-do-list-group-white';
+    let listItemClass = cont % 2 == 0 ? 'To-do-list-group-white' : 'To-do-list-group-gray';
+    item.classList.remove('To-do-list-group-white');
+    item.classList.remove('To-do-list-group-gray');
+
     item.classList.add(listItemClass);
 
     if (mode === 'dark') {
+      item.classList.remove('dark-mode-group-white');
+      item.classList.remove('dark-mode-group-gray');
+
       if (listItemClass === 'To-do-list-group-white') {
         item.classList.add('dark-mode-group-white');
       } else {
         item.classList.add('dark-mode-group-gray');
       }
     }
-
     cont++;
   });
 
