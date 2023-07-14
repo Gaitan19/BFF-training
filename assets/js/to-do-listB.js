@@ -35,7 +35,6 @@ const addList = () => {
     saveTasksToLocalStorage();
   }
   changeBackground();
-
 };
 
 const createListElement = (text, completed = false) => {
@@ -59,7 +58,6 @@ const createListElement = (text, completed = false) => {
   `;
 
   listElement.innerHTML = listItemContent;
-
   return listElement;
 };
 
