@@ -93,33 +93,22 @@ const editList = (listId) => {
   currentTextInput.addEventListener('keydown', (event) => {
     if (event.key === 'Enter') {
       let newText = filterList(currentTextInput.value);
-      if (newText) {
+      if (newText && newText.length > 1) {
         currentTextInput.replaceWith(currentText);
-        updateList(listId, newText);
+        currentText.textContent = newText;
+        if (mode === 'dark') {
+          currentText.classList.add("dark-mode-text");
+        } else {
+          currentText.classList.remove("dark-mode-text");
+        }
+        saveTasksToLocalStorage();
       }
     }
   });
 };
 
-const updateList = (listId, newText) => {
-  if (newText && newText.length > 1) {
-    let currentText = document.getElementById(`text${listId}`);
-    currentText.textContent = newText;
-    if (mode === 'dark') {
-      currentText.classList.add("dark-mode-text");
-    } else {
-      currentText.classList.remove("dark-mode-text");
-    }
-    saveTasksToLocalStorage();
-  } else {
-    alert("Please enter a task");
-  }
-};
-
 const deleteList = (listId) => {
-  // let current = document.getElementById(`text${listId}`).innerHTML;
   let c = document.getElementById(`list${listId}`);
-
   c.parentNode.removeChild(c);
   changeBackground();
   contTask();
