@@ -38,8 +38,8 @@
             listElement.setAttribute('id', `list${this.listNum}`);
             let listItemContent = `
               <div class="form-check">
-                <input class="form-check-input To-do-list-check toggleCheckBox ${this.mode === 'dark' ? 'dark-mode-checkBox' : ''}" type="checkbox" id="flexCheckDefault${this.listNum}" ${completed ? 'checked' : ''}"> 
-                <label class="form-check-label To-do-list-text ${completed ? 'completed' : ''} ${this.mode === 'dark' ? 'dark-mode-text' : ''}" id="text${this.listNum}">${text}</label>
+                <input class="form-check-input To-do-list-check toggleCheckBox ${this.mode === 'dark' ? 'dark-mode-checkBox' : ''}" type="checkbox" id="${this.listNum}" ${completed ? 'checked' : ''}> 
+                <label class="form-check-label labelTask${this.listNum} To-do-list-text ${completed ? 'completed' : ''} ${this.mode === 'dark' ? 'dark-mode-text' : ''}" id="text${this.listNum}">${text}</label>
               </div>
               <div class="To-do-list-group-buttons">
                 <button type="button" class="btn btn-success To-do-list-button editButt ${this.mode === 'dark' ? 'dark-mode-btn' : ''}" id="${this.listNum}">
@@ -50,14 +50,6 @@
                 </button>
               </div>
             `;
-            // onchange="toggleTask(this)
-
-            // let btnEdit = document.getElementById(`btnEdit${this.listNum}`);
-            /*  btnEdit.addEventListener('click', () => {
-                 this.addList(this.listNum);
-             });
-  */
-            // console.log(btnEdit);
 
             listElement.innerHTML = listItemContent;
 
@@ -104,14 +96,10 @@
             });
             localStorage.setItem('tasks', JSON.stringify(tasks));
         },
-        toggleTask: function (checkbox) {
-            console.log(checkbox);
-            inputCheck = document.getElementById(`${checkbox}`);
-            console.log(inputCheck);
-
-            let label = inputCheck.nextElementSibling;
+        toggleTask: function (id) {
+            let label = document.getElementById(`text${id}`)
             label.classList.toggle('completed');
-            this.saveTasksToLocalStorage(); 
+            this.saveTasksToLocalStorage();
         },
         addList: function () {
             let inputText = this.filterList(this.input.value);
@@ -283,15 +271,6 @@
                 this.addList();
             });
 
-            // window.addEventListener('click', () )
-
-            // document.querySelectorAll(".click").forEach(el => {
-            //     el.addEventListener("click", e => {
-            //       const id = e.target.getAttribute("id");
-            //       console.log("Se ha clickeado el id "+id);
-            //     });
-            //   });
-
             window.addEventListener('load', () => {
                 let edits = document.querySelectorAll(".editButt");
                 let deletes = document.querySelectorAll(".deleteButt");
@@ -317,14 +296,9 @@
 
 
             });
-
-
         }
-
-
     }
 
     module.main();
-
 }
 )();
