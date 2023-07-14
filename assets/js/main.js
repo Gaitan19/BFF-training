@@ -4,7 +4,7 @@
             this.listNum = 0;
             this.blucle = true;
             this.cacheDom();
-            this.switchMode.checked = this.mode === "dark";
+            // this.switchMode.checked = this.mode === "dark";
             this.ChannelMergerNodeMode();
             this.bindingEvents();
 
@@ -114,6 +114,7 @@
             this.changeBackground();
         },
         editList: function (listId) {
+            console.log(listId);
             let currentText = document.getElementById(`text${listId}`);
             let currentTextInput = document.createElement('input');
             currentTextInput.value = currentText.textContent;
