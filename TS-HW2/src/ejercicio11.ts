@@ -1,5 +1,5 @@
 class BankAccount {
-  private balance: number;
+  balance: number;
 
   constructor(initialBalance: number) {
     this.balance = initialBalance;
